@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File with Args",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "args": [
+                "https://www.youtube.com/watch?v=28tZ-S1LFok&ab_channel=BarsukRecords", "1:12.2", "1:15.2"
+            ],
+            "console": "integratedTerminal"
+        }
+    ]
+}
