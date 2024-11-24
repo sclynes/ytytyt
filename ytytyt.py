@@ -65,13 +65,14 @@ clip_folder = "/Users/simonclynes/Documents/ytytyt/vids/clips/"
 
 yt.streams.filter(progressive=True,file_extension='mp4').first().download(filename=video_folder+title+'.mp4')
 optimize_video_for_twitter(video_folder+title+'.mp4', video_folder+title+'_x.mp4')
-os.remove(video_folder+title+'.mp4')
 
 if len(sys.argv) > 3:
     start = str(sys.argv[2])
     end = str(sys.argv[3])
     ffmpeg.input(video_folder+title+'_x.mp4', ss=start, to=end).output(clip_folder+title+'_clip.mp4').run()
     #optimize_video_for_twitter(clip_folder+title+'_clip.mp4', clip_folder+title+'_clipx.mp4')
-    os.remove(clip_folder+title+'_clip.mp4')
+
+os.remove(video_folder+title+'.mp4')
+#os.remove(clip_folder+title+'_clip.mp4')
 
 os.system(f'open "{video_folder}"')
