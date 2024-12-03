@@ -1,9 +1,17 @@
 from pytube import YouTube
+from pathlib import Path
 from re import sub
 import ffmpeg
 import sys
 import subprocess
 import os
+
+base_dir = os.path.join(str(Path.home()), "Documents", "ytytyt")
+video_folder = os.path.join(base_dir, "vids")
+clip_folder = os.path.join(video_folder, "clips")
+
+os.makedirs(video_folder, exist_ok=True)
+os.makedirs(clip_folder, exist_ok=True)
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
@@ -70,9 +78,7 @@ if len(sys.argv) > 3:
     start = str(sys.argv[2])
     end = str(sys.argv[3])
     ffmpeg.input(video_folder+title+'_x.mp4', ss=start, to=end).output(clip_folder+title+'_clip.mp4').run()
-    #optimize_video_for_twitter(clip_folder+title+'_clip.mp4', clip_folder+title+'_clipx.mp4')
 
 os.remove(video_folder+title+'.mp4')
-#os.remove(clip_folder+title+'_clip.mp4')
 
 os.system(f'open "{video_folder}"')
